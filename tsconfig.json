@@ -12,8 +12,6 @@
     "isolatedModules": true,
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/types.ts"
+    "src/**/*"
   ]
 }

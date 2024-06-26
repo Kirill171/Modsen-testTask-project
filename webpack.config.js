@@ -46,7 +46,12 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // Расширения файлов, которые webpack будет рассматривать
+    extensions: ['.js', '.jsx', '.ts', '.tsx', 'png', 'jfif'], // Расширения файлов, которые webpack будет рассматривать
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@assets': path.resolve(__dirname, 'src/assets/') // Указываем алиас для папки с ресурсами (assets)
+      // Добавьте другие алиасы по мере необходимости
+    },
   },
 
   plugins: [

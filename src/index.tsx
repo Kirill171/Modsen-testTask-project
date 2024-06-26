@@ -1,11 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import App from './components/App';
 import './index.css';
-import App from './App';
 
-const root = createRoot(document.getElementById('root')); // Не знаю как пофиксить "Аргумент типа "HTMLElement | null" нельзя назначить параметру типа "Container". Тип "null" не может быть назначен для типа "Container".ts(2345)."
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const domNode = document.querySelector("#root");
+if (domNode !== null) {
+  const root = createRoot(domNode);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error("Root element not found");
+}

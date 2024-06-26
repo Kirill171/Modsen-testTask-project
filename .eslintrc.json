@@ -1,24 +1,35 @@
 {
-    "parserOptions": {
-      "ecmaVersion": 2021,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "env": {
-      "browser": true,
-      "es2021": true
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
-    "plugins": ["react"],
-    "rules": {
-      
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
       }
     }
   }
-  
+}
