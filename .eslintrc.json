@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -16,11 +17,9 @@
   },
   "plugins": [
     "react",
-    "simple-import-sort"
+    "import"
   ],
   "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
   },
   "settings": {
     "react": {

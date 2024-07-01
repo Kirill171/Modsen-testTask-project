@@ -2,71 +2,65 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx', // Точка входа для сборки проекта (изменили расширение на .tsx)
-
+  entry: './src/index.jsx',
   output: {
-    filename: 'bundle.js', // Имя выходного файла сборки
-    path: path.resolve(__dirname, 'dist'), // Путь для выходного файла сборки
-    publicPath: '/', // Добавляем publicPath для корректной работы devServer
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
-
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/, // Регулярное выражение для обработки файлов JavaScript и TypeScript
-        exclude: /node_modules/, // Исключаем папку node_modules
-        use: {
-          loader: 'babel-loader', // Используем загрузчик Babel
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'], // Пресеты Babel для поддержки ES6+, JSX и TypeScript
-          },
-        },
-      },
-      {
-        test: /\.css$/, // Регулярное выражение для обработки файлов с расширением .css
-        use: ['style-loader', 'css-loader'], // Загрузчики, используемые для обработки CSS-файлов
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i, // Регулярное выражение для обработки изображений
-        type: 'asset/resource', // Используем загрузчик asset/resource для обработки изображений
-      },
-      {
-        test: /\.(js|jsx|ts|tsx)$/, // Регулярное выражение для проверки ESLint
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        enforce: 'pre', // Указываем, что это должно быть выполнено до обычной сборки
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
         use: {
           loader: 'eslint-loader',
           options: {
-            emitWarning: true, // Отправлять предупреждения как ошибки
-            configFile: './.eslintrc.json', // Путь к файлу конфигурации ESLint
+            emitWarning: true,
+            configFile: './.eslintrc.json',
           },
         },
       },
     ],
   },
-
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', 'png', 'jfif'], // Расширения файлов, которые webpack будет рассматривать
+    extensions: ['.js', '.jsx'],
     alias: {
+      '@assets': path.resolve(__dirname, 'src/assets/'),
       '@components': path.resolve(__dirname, 'src/components/'),
-      '@assets': path.resolve(__dirname, 'src/assets/') // Указываем алиас для папки с ресурсами (assets)
-      // Добавьте другие алиасы по мере необходимости
+      '@styles': path.resolve(__dirname, 'src/styles/'),
     },
   },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
   ],
-
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'), // Каталог для статики
+      directory: path.join(__dirname, 'dist'),
     },
-    open: true, // Автоматически открывать браузер
-    historyApiFallback: true, // Добавляем параметр для поддержки SPA (одностраничных приложений)
+    open: true,
+    historyApiFallback: true,
   },
-
-  mode: 'development', // Режим сборки
+  mode: 'development',
 };
