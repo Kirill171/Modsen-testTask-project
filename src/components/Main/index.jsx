@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Cards from './Cards/Сards';
-import '../Main/Main';
+import Cards from './Cards';
 
 export default function Main({ result }) {
   if (!result || result.length === 0) {

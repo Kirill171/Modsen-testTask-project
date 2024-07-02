@@ -1,7 +1,7 @@
 import searchImage from '@assets/search.png';
 import React, { useRef, useState } from 'react';
-import Filter from './Filter/Filter';
-import Main from '../Main/Main';
+import Filter from './Filter';
+import Main from '../Main';
 
 export default function Header() {
   const inputRef = useRef(null);
