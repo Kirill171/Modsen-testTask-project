@@ -1,0 +1,16 @@
+.main-container {
+    margin: 30px 0 ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 70px;
+}
+
+.middle-text {
+    display: block;
+    width: fit-content;
+    margin: 60px auto 30px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+}

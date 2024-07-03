@@ -2,18 +2,21 @@ import searchImage from '@assets/search.png';
 import React, { useRef, useState } from 'react';
 import Filter from './Filter';
 import Main from '../Main';
+import './index.css'
 
 export default function Header() {
   const inputRef = useRef(null);
 
   const [query, setQuery] = useState('');
-  const [result, setResult] = useState([]);  // Инициализация как пустой массив
+  const [result, setResult] = useState([]);
   const [categories, setCategories] = useState('all');
   const [order, setOrder] = useState('relevance');
+  const [loading, setLoading] = useState(false);
 
   async function searchBooks() {
     const queryValue = inputRef.current?.value || '';
     setQuery(queryValue);
+    setLoading(true);
 
     try {
       let url = `https://www.googleapis.com/books/v1/volumes?q=${query}&orderBy=${order}`;
@@ -26,9 +29,11 @@ export default function Header() {
       const data = await response.json();
       setResult(data.items || []);
       console.log(result);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching books', error);
       setResult([]);
+      setLoading(false);
     }
   }
 
@@ -49,7 +54,7 @@ export default function Header() {
         searchBooks={searchBooks}
       />
 
-      <Main result={result} />
+      <Main result={result} loading={loading} />
     </header>
   );
 }
