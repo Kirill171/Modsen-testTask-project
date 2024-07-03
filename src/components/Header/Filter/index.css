@@ -1,0 +1,30 @@
+header .Filter {
+    color: white;
+    width: fit-content;
+    margin: 25px auto;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+}
+
+header .Filter select {
+    line-height: 27px;
+    width: 250px;
+    margin: 7px;
+    margin-right: 25px;
+    padding: 7px 10px;
+
+    color: rgb(102, 102, 102);
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+
+    border: 1px solid rgba(0, 0, 0, 0.651);
+    outline: none;
+    cursor: pointer;
+}
+
+header .Filter select option {
+    cursor: pointer;
+}

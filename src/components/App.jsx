@@ -1,16 +1,18 @@
 import React from 'react';
-import Footer from './Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Header';
+import BookInfo from './Main/Cards/BookInfo';
 // import Main from './Main/Main';
 
-function App() {
+export default function App() {
   return (
-    <div className="wrapper">
-      <Header />
-      {/* <Main /> */}
-      <Footer />
-    </div>
-  );
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={<Header />} />
+          <Route path="/Main/Cards/BookInfo" element={<BookInfo />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  )
 }
-
-export default App;

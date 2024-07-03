@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './index.css';
 
 export default function Filter({ categories, order, setCategories, setOrder, searchBooks }) {
   const handleChangeCategories = (e) => {
