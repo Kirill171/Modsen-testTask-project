@@ -6,7 +6,7 @@ import './index.css';
 import { useLocation } from 'react-router-dom';
 
 export default function BookInfo() {
-  const location = useLocation();
+  const location = useLocation();       // я не знаю почему это не работает, из-за того что невозможно передовать контекст верх, ничего невозможно сделать, только в redux как я понимаю такое возможно сделать, а чтобы обойти это можно заного делать запрос к конкретной книге.
   const { volumeInfo } = location.state || {};
   if (!volumeInfo) {
     return <div className='middle-text'>Volume information not found.</div>;
