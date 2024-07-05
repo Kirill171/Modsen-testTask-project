@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types';
 import Header from '../../../Header'
 import Button from '../../../Buttons/BackToHomePage'
 import './index.css';
-import { useLocation } from 'react-router-dom';
+import BookContext from '../../../Context/BookContext';
 
 export default function BookInfo() {
-  const location = useLocation();       // я не знаю почему это не работает, из-за того что невозможно передовать контекст верх, ничего невозможно сделать, только в redux как я понимаю такое возможно сделать, а чтобы обойти это можно заного делать запрос к конкретной книге.
-  const { volumeInfo } = location.state || {};
-  if (!volumeInfo) {
-    return <div className='middle-text'>Volume information not found.</div>;
+  const { selectedBook } = useContext(BookContext);
+
+  if (!selectedBook) {
+    return <div>Loading...</div>;
   }
+
+  const { volumeInfo } = selectedBook || location.state || {};
 
   return (
     <div>
@@ -22,11 +24,12 @@ export default function BookInfo() {
         </div>
         <div className='description'>
           <div className="book-info">
+            <p className='categories'>{volumeInfo?.categories ? volumeInfo.categories.join(', ') : 'Unknown'}</p>
             <h2>{volumeInfo.title}</h2>
-            <p>Authors: {volumeInfo.authors.join(', ')}</p>
+            <p className='author'>{volumeInfo.authors.join(', ')}</p>
+            <p className='descriptionBlock'>{volumeInfo.description}</p>
             <p>Publisher: {volumeInfo.publisher}</p>
             <p>Published Date: {volumeInfo.publishedDate}</p>
-            <p>Description: {volumeInfo.description}</p>
           </div>
         </div>
       </section>

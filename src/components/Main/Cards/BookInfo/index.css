@@ -6,3 +6,54 @@
     font-weight: 400;
     font-family: "Montserrat", sans-serif;
 }
+
+.main-content {
+    display: flex;
+}
+
+.preview-img {
+    padding: 3% 10%;
+    background-color: rgb(235, 235, 235);
+}
+
+.preview-img img {
+    width: 360px;
+    height: 500px;
+}
+
+.description {
+    flex: 1;
+}
+
+.book-info {
+    width: 1000px;
+    margin: auto;
+    padding: 20px;
+
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+}
+
+.book-info h2 {
+    margin: 20px 0;
+}
+
+.book-info p {
+    margin: 10px 0;
+}
+
+.book-info .author {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 400;
+    color: #949494;
+}
+
+.book-info .descriptionBlock {
+    padding: 15px;
+    border: 1px solid #94949480;
+    margin: 30px 0;
+    font-weight: 500;
+}

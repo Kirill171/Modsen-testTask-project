@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import Cards from './Cards';
 import './index.css'
 
-export default function Main({ result, loading }) {
+export default function Main({ result, loading, setSelectedBook, isHomePage }) {
   if (loading) {
     return <div className='middle-text'>Loading...</div>;
   }
 
-  if (!result || result.length === 0) {
+  if (isHomePage && (!result || result.length === 0)) {
     return <div className='middle-text'>No books found.</div>;
   }
 
   return (
     <>
-      <div className='middle-text'>Found books: {result.length}</div>
+      {isHomePage && <div className='middle-text'>Found books: {result.length}</div>}
       <main className="main-container">
         {result.map((book, index) => (
-          <Cards key={index} book={book} />
+          <Cards key={index} book={book} setSelectedBook={setSelectedBook} />
         ))}
       </main>
     </>
@@ -41,4 +41,6 @@ Main.propTypes = {
     })
   ).isRequired,
   loading: PropTypes.bool.isRequired,
+  setSelectedBook: PropTypes.func.isRequired,
+  isHomePage: PropTypes.bool.isRequired,
 };

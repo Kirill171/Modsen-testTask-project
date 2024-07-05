@@ -5,17 +5,13 @@ import './index.css';
 export default function Filter({ categories, order, setCategories, setOrder, searchBooks }) {
   const handleChangeCategories = (e) => {
     setCategories(e.target.value);
-    getBook();
+    searchBooks();
   };
 
   const handleChangeOrder = (e) => {
     setOrder(e.target.value);
-    getBook();
-  };
-
-  const getBook = () => {
     searchBooks();
-  }
+  };
 
   return (
     <div className='Filter'>

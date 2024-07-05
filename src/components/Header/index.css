@@ -46,3 +46,9 @@ header .inputDiv img{
     right: 10px;
     top: 7px;
 }
+
+header .inputDiv input:disabled {
+    opacity: 1;
+    cursor: auto; 
+    background-color: white; 
+}
