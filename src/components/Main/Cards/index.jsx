@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { Link } from 'react-router-dom';
+import BookContext from '@context/BookContext';
 
-const Cards = ({ book, setSelectedBook }) => {
+const Cards = ({ book }) => {
+  const { setSelectedBook } = useContext(BookContext);
   const { volumeInfo } = book || {};
 
   function handleClick() {
     setSelectedBook(book);
   }
   return (
-    <Link className='link' to='./Main/Cards/BookInfo' onClick={handleClick}>
+    <Link className='link' to='/BookInfo' onClick={handleClick}>
         <div className="book-card">
           <img src={volumeInfo?.imageLinks?.thumbnail} alt={volumeInfo?.title || 'Book Thumbnail'} />
           <p className='categories'>{volumeInfo?.categories ? volumeInfo.categories.join(', ') : 'Unknown'}</p>

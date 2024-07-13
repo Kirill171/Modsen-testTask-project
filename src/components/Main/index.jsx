@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Cards from './Cards';
 import './index.css'
 
-export default function Main({ result, loading, setSelectedBook, isHomePage }) {
+export default function Main({ result, loading, isHomePage }) {
   if (loading) {
     return <div className='middle-text'>Loading...</div>;
   }
@@ -17,7 +17,7 @@ export default function Main({ result, loading, setSelectedBook, isHomePage }) {
       {isHomePage && <div className='middle-text'>Found books: {result.length}</div>}
       <main className="main-container">
         {result.map((book, index) => (
-          <Cards key={index} book={book} setSelectedBook={setSelectedBook} />
+          <Cards key={index} book={book} />
         ))}
       </main>
     </>
