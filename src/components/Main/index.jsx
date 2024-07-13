@@ -41,6 +41,5 @@ Main.propTypes = {
     })
   ).isRequired,
   loading: PropTypes.bool.isRequired,
-  setSelectedBook: PropTypes.func.isRequired,
   isHomePage: PropTypes.bool.isRequired,
 };

@@ -12,7 +12,7 @@ const Cards = ({ book }) => {
     setSelectedBook(book);
   }
   return (
-    <Link className='link' to='/BookInfo' onClick={handleClick}>
+    <Link className='link' to='/book-info' onClick={handleClick}>
         <div className="book-card">
           <img src={volumeInfo?.imageLinks?.thumbnail} alt={volumeInfo?.title || 'Book Thumbnail'} />
           <p className='categories'>{volumeInfo?.categories ? volumeInfo.categories.join(', ') : 'Unknown'}</p>
@@ -37,7 +37,6 @@ Cards.propTypes = {
       }),
     }),
   }).isRequired,
-  setSelectedBook: PropTypes.func.isRequired,
 };
 
 export default Cards;

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import PropTypes from 'prop-types';
 import Button from '@components/Buttons/BackToHomePage'
 import './index.css';
 import BookContext from '@context/BookContext';
@@ -34,21 +33,3 @@ export default function BookInfo() {
     </div>
   );
 }
-
-BookInfo.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      volumeInfo: PropTypes.shape({
-        title: PropTypes.string,
-        authors: PropTypes.arrayOf(PropTypes.string),
-        publisher: PropTypes.string,
-        publishedDate: PropTypes.string,
-        categories: PropTypes.arrayOf(PropTypes.string),
-        description: PropTypes.string,
-        imageLinks: PropTypes.shape({
-          thumbnail: PropTypes.string,
-        }),
-      }),
-    }),
-  }).isRequired,
-};

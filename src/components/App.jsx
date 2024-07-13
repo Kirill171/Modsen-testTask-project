@@ -26,11 +26,11 @@ AppProviders.propTypes = {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '/' : '/Modsen-testTask-project'}>
       <AppProviders>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/BookInfo" element={<BookInfoPage />} />
+          <Route path="/book-info" element={<BookInfoPage />} />
         </Routes>
       </AppProviders>
     </BrowserRouter>
