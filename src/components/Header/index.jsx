@@ -1,24 +1,19 @@
+import React, { useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import searchImage from '@assets/search.png';
-import React, { useRef, useState, useContext } from 'react';
 import Filter from './Filter';
-import Main from '../Main';
 import './index.css'
-import BookContext from '../Context/BookContext';
-import { useNavigate, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function Header() {
+export default function Header({ setResult, setLoading }) {
   const inputRef = useRef(null);
-  const navigate = useNavigate(); 
   const location = useLocation(); 
 
-  const { setSelectedBook } = useContext(BookContext);
-  const [result, setResult] = useState([]);
   const [categories, setCategories] = useState('all');
   const [order, setOrder] = useState('relevance');
-  const [loading, setLoading] = useState(false);
 
   const queryRef = useRef('');
-  const isBookInfoPage = location.pathname === '/Main/Cards/BookInfo';
+  const isBookInfoPage = location.pathname === '/BookInfo';
 
   async function searchBooks() {
     const queryValue = inputRef.current?.value || '';
@@ -38,7 +33,6 @@ export default function Header() {
         setResult(data.items || []);
         setLoading(false);
   
-        navigate(`/`);
       } catch (error) {
         console.error('Error fetching books', error);
         setResult([]);
@@ -46,8 +40,6 @@ export default function Header() {
       }
     }
   }
-
-  const isHomePage = location.pathname === '/';
 
   return (
     <header>
@@ -66,7 +58,14 @@ export default function Header() {
         searchBooks={searchBooks}
       />
 
-      <Main result={result} loading={loading} setSelectedBook={setSelectedBook} isHomePage={isHomePage} />
     </header>
   );
 }
+
+Header.propTypes = {
+  setResult: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
+};
+
+
+// <Main result={result} loading={loading} isHomePage={isHomePage} />
