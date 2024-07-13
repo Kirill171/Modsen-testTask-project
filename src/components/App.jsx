@@ -26,7 +26,7 @@ AppProviders.propTypes = {
 
 export default function App() {
   return (
-    <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '/' : '/Modsen-testTask-project'}>
+    <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '/' : '/Modsen-testTask-project/'}>
       <AppProviders>
         <Routes>
           <Route path="/" element={<HomePage />} />
