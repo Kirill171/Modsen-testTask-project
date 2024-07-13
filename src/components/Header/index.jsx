@@ -66,6 +66,3 @@ Header.propTypes = {
   setResult: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
 };
-
-
-// <Main result={result} loading={loading} isHomePage={isHomePage} />

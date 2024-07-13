@@ -36,7 +36,7 @@ Cards.propTypes = {
         thumbnail: PropTypes.string,
       }),
     }),
-  }).isRequired,
+  }),
 };
 
 export default Cards;

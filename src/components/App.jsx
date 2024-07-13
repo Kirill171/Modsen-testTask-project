@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import HomePage from '@pages/HomePage';
 import BookInfoPage from '@pages/BookInfoPage';
 import { BookProvider } from '@context/BookContext';
@@ -26,13 +26,13 @@ AppProviders.propTypes = {
 
 export default function App() {
   return (
-    <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '/' : '/Modsen-testTask-project/'}>
+    <HashRouter>
       <AppProviders>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/book-info" element={<BookInfoPage />} />
         </Routes>
       </AppProviders>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
