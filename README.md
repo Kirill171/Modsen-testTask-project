@@ -1,6 +1,6 @@
 # Modsen-testTask-project
 Лисицкого Кирилла
-## Deploy - https://kirill171.github.io/](https://kirill171.github.io/Modsen-testTask-project/
+## Deploy - https://kirill171.github.io/Modsen-testTask-project/
 
 # Практического задание js/react
 
