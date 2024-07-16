@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './index.css';
 
-export default function Filter({ categories, order, setCategories, setOrder, searchBooks }) {
+export default function Filter({ categories, order, setCategories, setOrder, handleSearch }) {
   const handleChangeCategories = (e) => {
     setCategories(e.target.value);
-    searchBooks();
+    handleSearch();
   };
 
   const handleChangeOrder = (e) => {
     setOrder(e.target.value);
-    searchBooks();
+    handleSearch();
   };
 
   return (
@@ -40,5 +40,5 @@ Filter.propTypes = {
   order: PropTypes.string.isRequired,
   setCategories: PropTypes.func.isRequired,
   setOrder: PropTypes.func.isRequired,
-  searchBooks: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };

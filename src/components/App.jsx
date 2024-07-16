@@ -5,17 +5,20 @@ import HomePage from '@pages/HomePage';
 import BookInfoPage from '@pages/BookInfoPage';
 import { BookProvider } from '@context/BookContext';
 import { BooksProvider } from '@context/BooksContext';
+import { SearchProvider } from '@context/SearchContext';
 import { LoadingProvider } from '@context/LoadingContext';
 import { HomePageProvider } from '@context/HomePageContext';
 
 const AppProviders = ({ children }) => (
   <BooksProvider>
     <BookProvider>
-      <LoadingProvider>
-        <HomePageProvider>
-          {children}
-        </HomePageProvider>
-      </LoadingProvider>
+      <SearchProvider>
+        <LoadingProvider>
+          <HomePageProvider>
+            {children}
+          </HomePageProvider>
+        </LoadingProvider>
+      </SearchProvider>
     </BookProvider>
   </BooksProvider>
 );

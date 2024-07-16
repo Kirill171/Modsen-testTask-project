@@ -1,36 +1,33 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import searchImage from '@assets/search.png';
+import searchBooks from '../../api';
 import Filter from './Filter';
 import './index.css'
 import PropTypes from 'prop-types';
 
-export default function Header({ setResult, setLoading }) {
-  const inputRef = useRef(null);
+export default function Header({ setResult, setLoading, inputRef, inputValue, setInputValue, categories, setCategories, order, setOrder }) {
   const location = useLocation(); 
+  const isBookInfoPage = location.pathname === '/book-info';
 
-  const [categories, setCategories] = useState('all');
-  const [order, setOrder] = useState('relevance');
+  useEffect(() => {
+      setCategories(categories);
+      setOrder(order);
+      inputRef.current.value = inputValue; 
+  }, [isBookInfoPage]);
 
-  const queryRef = useRef('');
-  const isBookInfoPage = location.pathname === '/BookInfo';
 
-  async function searchBooks() {
+  async function handleSearch() {
     const queryValue = inputRef.current?.value || '';
+    setInputValue(queryValue);
 
-    if(queryValue.length > 0 && queryValue !== queryRef.current) {
-      queryRef.current = queryValue;
+    if(inputValue.length > 0) {
       setLoading(true);
   
       try {
-        let url = `https://www.googleapis.com/books/v1/volumes?q=${queryValue}&orderBy=${order}`;
-        if (categories !== 'all') {
-          url += `+subject:${categories}`;
-        }
-  
-        const response = await fetch(url);
-        const data = await response.json();
-        setResult(data.items || []);
+        const results = await searchBooks(inputValue, categories, order);
+
+        setResult(results || []);
         setLoading(false);
   
       } catch (error) {
@@ -46,7 +43,7 @@ export default function Header({ setResult, setLoading }) {
       <div className='text'>Search for books</div>
 
       <div className='inputDiv'>
-        <input placeholder='Search for Books' ref={inputRef} onChange={searchBooks} disabled={isBookInfoPage} />
+        <input placeholder='Search for Books' ref={inputRef} onChange={handleSearch} disabled={isBookInfoPage} />
         <img className='searchImage' src={searchImage} alt='Search Icon' />
       </div>
 
@@ -55,7 +52,7 @@ export default function Header({ setResult, setLoading }) {
         order={order}
         setCategories={setCategories}
         setOrder={setOrder}
-        searchBooks={searchBooks}
+        handleSearch={handleSearch}
       />
 
     </header>
@@ -65,4 +62,11 @@ export default function Header({ setResult, setLoading }) {
 Header.propTypes = {
   setResult: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
+  inputRef: PropTypes.object.isRequired,
+  inputValue: PropTypes.string.isRequired,
+  setInputValue: PropTypes.func.isRequired,
+  categories: PropTypes.string.isRequired,
+  setCategories: PropTypes.func.isRequired,
+  order: PropTypes.string.isRequired,
+  setOrder: PropTypes.func.isRequired,
 };
