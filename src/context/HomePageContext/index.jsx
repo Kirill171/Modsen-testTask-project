@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const HomePageContext = createContext();
 
 export const HomePageProvider = ({ children }) => {
-  const isHomePage = location.pathname === '/';
+  const isHomePage = (location.pathname === '/' || location.pathname === '/Modsen-testTask-project/');
 
   return (
     <HomePageContext.Provider value={{ isHomePage }}>
