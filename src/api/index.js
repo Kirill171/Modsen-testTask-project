@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const url = 'https://www.googleapis.com/books/v1/volumes';
 
-export default async function searchBooks(queryValue, categories, order) {
+export default async function searchBooks(queryValue, categories, order, startIndex = 0) {
     try {
-        let apiUrl = `${url}?q=${queryValue}&orderBy=${order}`;
+        let apiUrl = `${url}?q=${queryValue}&orderBy=${order}&startIndex=${startIndex}&maxResults=20`;
         if (categories !== 'all') {
             apiUrl += `&subject:${categories}`;
         }

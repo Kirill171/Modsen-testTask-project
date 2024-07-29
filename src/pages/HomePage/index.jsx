@@ -10,12 +10,12 @@ export default function HomePage() {
   const { result, setResult } = useContext(BooksContext);
   const { loading, setLoading } = useContext(LoadingContext)
   const { isHomePage } = useContext(HomePageContext);
-  const { inputRef, inputValue, setInputValue, categories, setCategories, order, setOrder } = useContext(SearchContext);
+  const { inputRef, inputValue, setInputValue, categories, setCategories, order, setOrder, startIndex, setStartIndex } = useContext(SearchContext);
 
 
   return (
     <>
-      <Header setResult={setResult} setLoading={setLoading} inputRef={inputRef} inputValue={inputValue} setInputValue={setInputValue} categories={categories} setCategories={setCategories} order={order} setOrder={setOrder} />
+      <Header setResult={setResult} setLoading={setLoading} inputRef={inputRef} inputValue={inputValue} setInputValue={setInputValue} categories={categories} setCategories={setCategories} order={order} setOrder={setOrder} startIndex={startIndex} setStartIndex={setStartIndex} />
       <Main result={result} loading={loading} isHomePage={isHomePage} />
     </>
   )
