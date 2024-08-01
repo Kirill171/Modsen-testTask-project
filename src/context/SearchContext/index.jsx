@@ -1,17 +1,16 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
-  const inputRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
   const [categories, setCategories] = useState('all');
   const [order, setOrder] = useState('relevance');
-  const [startIndex, setStartIndex] = useState();
+  const [startIndex, setStartIndex] = useState(0);
 
   return (
-    <SearchContext.Provider value={{ inputRef, inputValue, setInputValue, categories, setCategories, order, setOrder, startIndex, setStartIndex }}>
+    <SearchContext.Provider value={{ inputValue, setInputValue, categories, setCategories, order, setOrder, startIndex, setStartIndex }}>
       {children}
     </SearchContext.Provider>
   )
