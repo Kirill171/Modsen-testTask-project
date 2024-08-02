@@ -45,6 +45,7 @@ header .inputDiv img {
     position: absolute;
     right: 10px;
     top: 7px;
+    cursor: pointer;
 }
 
 header .inputDiv input:disabled {

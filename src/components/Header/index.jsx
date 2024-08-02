@@ -55,6 +55,10 @@ export default function Header({
     }
   };
 
+  const handleClick = () => {
+    handleSearch(inputValue, categories, order, startIndex);
+  };
+
   return (
     <header>
       <div className='text'>Search for books</div>
@@ -66,7 +70,7 @@ export default function Header({
           onKeyDown={handleKeyDown}
           disabled={isBookInfoPage}
         />
-        <img className='searchImage' src={searchImage} alt='Search Icon' />
+        <img className='searchImage' onClick={handleClick} src={searchImage} alt='Search Icon' />
       </div>
 
 
