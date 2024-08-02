@@ -28,3 +28,40 @@ header .Filter select {
 header .Filter select option {
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    header .Filter select {
+        width: 140px;
+        margin-right: 40px;
+
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 425px) {
+    header .Filter {
+        width: 270px;
+        font-weight: 500;
+    }
+
+
+    header .Filter select {
+        width: 150px;
+        margin-right: 0px;
+
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    header .Filter {
+        width: 240px;
+
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    header .Filter select {
+        width: 130px;
+    }
+}
