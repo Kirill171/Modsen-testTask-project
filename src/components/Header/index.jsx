@@ -50,7 +50,7 @@ export default function Header({
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.keyCode === 13) {
       handleSearch(inputValue, categories, order, startIndex);
     }
   };
