@@ -55,6 +55,12 @@ export default function Header({
     }
   };
 
+  const handleSearchOnInput = () => {
+    if (inputValue.trim() !== '') {
+      handleSearch(inputValue, categories, order, startIndex);
+    }
+  };
+
   const handleClick = () => {
     handleSearch(inputValue, categories, order, startIndex);
   };
@@ -68,6 +74,7 @@ export default function Header({
           value={inputValue}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
+          onBlur={handleSearchOnInput}
           disabled={isBookInfoPage}
         />
         <img className='searchImage' onClick={handleClick} src={searchImage} alt='Search Icon' />
