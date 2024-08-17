@@ -3,13 +3,22 @@
 }
 
 .preview-img {
-    padding: 3% 10%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-left: -55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6% 10%;
+    width: 40%;
+    height: 100vh;
     background-color: rgb(235, 235, 235);
 }
 
 .preview-img img {
-    width: 360px;
-    height: 500px;
+    width: 60vh;
+    height: 80vh;
 }
 
 .description {
@@ -17,12 +26,11 @@
 }
 
 .book-info {
-    width: 1000px;
+    width: 80%;
     margin: auto;
     padding: 20px;
 
     font-size: 18px;
-    font-weight: 400;
     color: black;
     font-family: "Montserrat", sans-serif;
 }
@@ -47,4 +55,44 @@
     border: 1px solid #94949480;
     margin: 30px 0;
     font-weight: 500;
+}
+
+
+
+@media (max-width: 1024px) {
+    .preview-img img{
+        width: 50vh;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-wrap: wrap;
+    }
+
+    .preview-img {
+        width: 100%;
+        position: unset;
+    }
+
+    .preview-img img{
+        width: 50vh;
+        height: 70vh;
+    }
+
+    .book-info {
+        width: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+    .book-info p {
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .book-info .categories {
+        font-size: 18px;
+    }
 }

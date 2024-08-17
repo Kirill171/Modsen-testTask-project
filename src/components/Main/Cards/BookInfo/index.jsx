@@ -13,9 +13,9 @@ export default function BookInfo() {
   const { volumeInfo } = selectedBook;
 
   return (
-    <div>
-      <Button />
+    <main>
       <section className='main-content'>
+        <Button />
         <div className='preview-img'>
           {volumeInfo && volumeInfo.imageLinks && (
             <img src={volumeInfo.imageLinks.thumbnail} alt={volumeInfo.title || 'Book Thumbnail'} />
@@ -32,6 +32,6 @@ export default function BookInfo() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

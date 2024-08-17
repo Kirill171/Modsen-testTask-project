@@ -17,7 +17,7 @@ const Cards = ({ book }) => {
           <img src={volumeInfo?.imageLinks?.thumbnail} alt={volumeInfo?.title || 'Book Thumbnail'} />
           <p className='categories'>{volumeInfo?.categories ? volumeInfo.categories.join(', ') : 'Unknown'}</p>
           <h2>{volumeInfo?.title || 'Unknown Title'}</h2>
-          <p>{volumeInfo?.authors ? volumeInfo.authors.join(', ') : 'Unknown'}</p>
+          <p className='authors'>{volumeInfo?.authors ? volumeInfo.authors.join(', ') : 'Unknown'}</p>
         </div>
     </Link>
   );
