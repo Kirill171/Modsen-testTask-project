@@ -1,6 +1,6 @@
-# Modsen-testTask-project
+# Modsen-Task-project
 Лисицкого Кирилла
-## Deploy - https://kirill171.github.io/Modsen-testTask-project/
+## Deploy (поиск может не работать без использования VPN) - https://kirill171.github.io/Modsen-testTask-project/
 
 # Практического задание js/react
 
